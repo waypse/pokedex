@@ -7,7 +7,7 @@
         </div>
         {% if user %}
         <ul class="nav nav-pills">
-            <li class="btn btn-primary nav-item"><a href="/addCard" class="text-white nav-link">Add a pokemon</a></li>
+            {% if pokedex.length < 151 %}<li class="btn btn-primary nav-item"><a href="/addCard" class="text-white nav-link">Add a pokemon</a></li>{% endif %}
             <li class="btn btn-primary nav-item"><a href="/connect" class="text-white nav-link">Change Trainer</a></li>
         </ul>
         {% endif %}
