@@ -68,9 +68,6 @@ app.get('/addCard', async (req, res) => {
             pokeindex = r;
             break;
         }
-
-        if (user.pokedex.length === 151) res.redirect('/');
-
         for (let i = 0; i < user.pokedex.length; i++){
             if(user.pokedex[i].index === r) {
                 pokemonExist = true;
