@@ -1,0 +1,24 @@
+{% extends "./../main.twig" %}
+{% block main %}
+<div class="container">
+<div class="row">
+
+  <form class="col-md-6 mx-auto mt-5" method="post" enctype="multipart/form-data" action="{{action}}">
+        <div>
+            <label for="name">Nom</label>
+            <input type="text" class="form-control" id="name" name="name"  placeholder="Entrer un nom">
+         </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="text" class="form-control" id="password" name="password"  placeholder="mot de passe">
+        </div>
+        <div >
+            <label for="mail">votre mail</label>
+            <input type="text" class="form-control" id="mail" name="mail" placeholder="votre mail">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+</div>
+</div>
+{% endblock %}

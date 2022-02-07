@@ -1,0 +1,14 @@
+.text-wrapper {
+    overflow: hidden;
+    width: 10rem;
+    height:8rem;
+    display:flex;
+    text-align: center;
+    justify-content: center;
+}
+.badg {
+    width: 2.6rem !important;
+    height: 2.6rem !important;
+    margin-left: 1rem !important;
+    background-repeat: no-repeat;
+}

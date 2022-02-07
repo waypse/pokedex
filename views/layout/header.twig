@@ -1,0 +1,14 @@
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <h1>{% if user %}{{ badges[8] }} {{ user.name }}: {% endif %}Pokedex {{ pokedex.length }}</h1>
+            {% for badge in badges %}
+            <div class="badg">{% if badge[loop.index] <= 7 %}{{badge[loop.index]}}{% endif %}</div>
+            {% endfor %}
+        </div>
+        {% if user %}
+        <ul class="nav nav-pills">
+            <li class="btn btn-primary nav-item"><a href="/addCard" class="text-white nav-link">Add a pokemon</a></li>
+            <li class="btn btn-primary nav-item"><a href="/connect" class="text-white nav-link">Change Trainer</a></li>
+        </ul>
+        {% endif %}
+    </header>

@@ -1,0 +1,20 @@
+{% extends "./../main.twig" %}
+{% block main %}
+<div class="container">
+<div class="d-flex flex-column">
+
+  <form class="col-md-6 mx-auto mt-5" method="post" enctype="multipart/form-data" action="{{action}}">
+        <div>
+            <label for="name">Your trainer name</label>
+            <input type="text" class="form-control" id="name" name="name"  placeholder="Entrer un nom">
+         </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="text" class="form-control" id="password" name="password"  placeholder="mot de passe">
+        </div>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+    <a class="col-md-6 mx-auto mt-2" href="/addUser">You're not a trainer yet ?</a>
+</div>
+</div>
+{% endblock %}

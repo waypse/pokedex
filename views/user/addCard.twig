@@ -1,0 +1,23 @@
+{% extends "./../main.twig" %}
+{% block main %}
+<div class="container">
+<div class="row">
+
+  <form class="col-md-6 mx-auto mt-5" method="post" enctype="multipart/form-data" action="{% if action == "/updateCard" %}{{action}}/{{pokeid}}{% else %}{{action}}/{{userid}}{% endif %}">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name"  placeholder="Entrer un nom" value="{{card.name}}" >
+         </div>
+        <div class="btn btn-primary" id="random">Random pokemon name</div>
+        <div>
+            <label for="type">Type</label>
+            <input type="text" class="form-control" id="type" name="type"  placeholder="Entrer un type" value="{{card.type}}" >
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+</div>
+</div>
+<script src="/addpoke.js"></script>
+{% endblock %}
+
