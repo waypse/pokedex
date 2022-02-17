@@ -9,6 +9,13 @@
 .badg {
     width: 2.6rem !important;
     height: 2.6rem !important;
-    margin-left: 1rem !important;
+    margin-left: 0.5rem !important;
     background-repeat: no-repeat;
+}
+.badgess {
+    display: flex !important;
+    flex-direction: row !important;
+}
+.badges-container {
+    flex-direction: column !important;
 }

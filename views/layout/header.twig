@@ -1,9 +1,11 @@
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-        <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-            <h1>{% if user %}{{ badges[8] }} {{ user.name }}: {% endif %}Pokedex {{ pokedex.length }}</h1>
+        <div class="badges-container d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <h1 class="display-2">{% if user %}{% if pokedex|length == 151 %}Best trainer {% endif %} {{ user.name }}: Pokedex {{ pokedex.length }}{% endif %}</h1>
+            <div class="badgess">
             {% for badge in badges %}
-            <div class="badg">{% if badge[loop.index] <= 7 %}{{badge[loop.index]}}{% endif %}</div>
+                <div class="badg">{% if badge[loop.index] <= 7 %}{{badge[loop.index]}}{% endif %}</div>
             {% endfor %}
+            </div>
         </div>
         {% if user %}
         <ul class="nav nav-pills">

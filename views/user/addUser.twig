@@ -5,19 +5,19 @@
 
   <form class="col-md-6 mx-auto mt-5" method="post" enctype="multipart/form-data" action="{{action}}">
         <div>
-            <label for="name">Nom</label>
-            <input type="text" class="form-control" id="name" name="name"  placeholder="Entrer un nom">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name"  placeholder="enter your name">
          </div>
         <div>
             <label for="password">Password</label>
-            <input type="text" class="form-control" id="password" name="password"  placeholder="mot de passe">
+            <input type="text" class="form-control" id="password" name="password"  placeholder="password">
         </div>
-        <div >
-            <label for="mail">votre mail</label>
-            <input type="text" class="form-control" id="mail" name="mail" placeholder="votre mail">
+        <div>
+            <label for="mail">Email</label>
+            <input type="text" class="form-control" id="mail" name="mail" placeholder="your mail" {% if error %} autofocus  style="border-color: red;" {% endif %}>
         </div>
-        
-        <button type="submit" class="btn btn-primary">Envoyer</button>
+        {% if error %}<p>{{ error }}</p>{% endif %}
+        <button type="submit" class="btn btn-primary">send</button>
     </form>
 </div>
 </div>

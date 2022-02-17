@@ -98,10 +98,6 @@ app.get('/addCard', async (req, res) => {
             await user.badges.push(user.badges.length +1);
         }
     }
-
-    if (user.pokedex.length === 151) {
-        await user.badges.push("Best trainer");
-    }
     
     User.updateOne({ _id: req.session.userid }, { badges: user.badges }, (error, user) => {
         if(error){
@@ -150,6 +146,9 @@ app.post('/updateCard/:id', async (req, res) =>{
 app.get('/deleteCard/:id', async (req, res) =>{
     const card = await User.findOne({ _id: req.session.userid });    
     const index = card.pokedex.findIndex(pokedex => pokedex.id == req.params.id);
+    if(card.pokedex.length%18 === 0){
+        card.badges.pop();
+    }
     card.pokedex.splice(index, 1);
     await card.save();
 
@@ -163,9 +162,30 @@ app.get ('/addUser', async (req, res)=> {
 })
 
 app.post('/addUser', async (req, res) => {
-    const user = new User(req.body)
-    user.save()
-    res.redirect('/')
+    const userCheck = await User.findOne({mail: req.body.mail})
+    let error;
+    const filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (filter.test(req.body.mail) && !userCheck && req.body.name != "" && req.body.password != "") {
+        const user = new User({name: req.body.name, password: req.body.password, mail: req.body.mail })
+        req.session.destroy()
+        user.save()
+        res.redirect('/')
+    }else if (!filter.test(req.body.mail)) {
+        error = 'Please provide a valid email address'
+        res.render('./user/addUser.twig', {
+            error: error
+        })
+    }else if (userCheck) {
+        error = 'user with same email already exists'
+        res.render('./user/addUser.twig', {
+            error: error
+        })
+    }else if (req.body.name === '' || req.body.password === '') {
+        error = "all fields are required"
+        res.render('./user/addUser.twig', {
+            error: error
+        })
+    }
 })
 
 app.get('/connect', async (req, res) => {
@@ -176,7 +196,7 @@ app.get('/connect', async (req, res) => {
 
 app.post('/connect', async (req, res) => {
     let obj ={
-        name: req.body.name,
+        mail: req.body.name,
         password: req.body.password,
     }
     const user = await User.findOne(obj);
