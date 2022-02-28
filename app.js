@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import upload from 'express-fileupload';
 import session from 'express-session';
-import fs from 'fs';
 import User from './models/user.js';
 import db from "./config.js";
 import axios from 'axios';
